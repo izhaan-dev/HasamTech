@@ -1,0 +1,94 @@
+/* Import Inter Font for that clean, professional look */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --primary-red: #b71c1c;       /* Slightly deeper professional red */
+  --accent-red: #d32f2f;        /* Vibrant red for interactions */
+  --primary-grey: #263238;      /* Deep, rich charcoal */
+  --secondary-grey: #546e7a;    /* Professional slate grey */
+  --light-bg: #f5f7fa;          /* Cool grey-white background */
+  --white: #ffffff;
+  --shadow-sm: 0 4px 12px rgba(0,0,0,0.05);
+  --shadow-lg: 0 15px 30px rgba(0,0,0,0.1);
+  --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif; /* Minimalist font stack */
+  background-color: var(--light-bg);
+  color: var(--primary-grey);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased; /* Makes font look crisp */
+  /* Subtle pattern to remove empty feel */
+  background-image: radial-gradient(#dfe6e9 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+a { text-decoration: none; color: inherit; }
+ul { list-style: none; padding: 0; }
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* --- Navbar --- */
+nav {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px); /* Modern glass effect */
+  box-shadow: var(--shadow-sm);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+.nav-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 80px;
+}
+
+.logo-area {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: var(--primary-grey);
+  letter-spacing: -0.02em;
+}
+
+.logo-img { height: 45px; }
+
+.nav-links { display: flex; gap: 40px; }
+
+.nav-links a {
+  font-weight: 500;
+  font-size: 0.95rem;
+  color: var(--secondary-grey);
+  position: relative;
+  transition: var(--transition);
+}
+
+.nav-links a:hover { color: var(--primary-red); }
+
+/* --- Footer --- */
+.footer {
+  background-color: var(--primary-grey);
+  color: rgba(255,255,255,0.8);
+  text-align: center;
+  padding: 3rem 0;
+  margin-top: 6rem;
+  font-size: 0.9rem;
+}
+.footer strong { color: var(--white); }
+
+/* --- Global Animations --- */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}

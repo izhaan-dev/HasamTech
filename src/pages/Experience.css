@@ -1,0 +1,183 @@
+/* --- Container (Clean, No Grid) --- */
+.experience-container {
+  padding: 6rem 0;
+  animation: fadeInUp 0.8s ease-out;
+  background-color: #fcfcfc; /* Clean, very light grey/white */
+  /* Grid lines removed as requested */
+}
+
+.experience-header {
+  text-align: center;
+  margin-bottom: 6rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.experience-header h2 { font-size: 3.5rem; color: var(--primary-grey); margin-bottom: 1rem; letter-spacing: -1px; }
+.experience-header p { color: var(--secondary-grey); font-size: 1.25rem; }
+
+/* --- Timeline Structure --- */
+.timeline {
+  position: relative;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* Center Line */
+.timeline::after {
+  content: '';
+  position: absolute;
+  width: 4px;
+  background-color: #e0e0e0; /* Light grey line */
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  margin-left: -2px;
+  border-radius: 2px;
+}
+
+.timeline-item {
+  padding: 10px 50px; /* More breathing room */
+  position: relative;
+  background-color: inherit;
+  width: 50%;
+  box-sizing: border-box;
+  margin-bottom: 3rem; /* More space between items */
+}
+
+/* Left side (Odd items) */
+.timeline-item:nth-child(odd) { left: 0; text-align: right; }
+
+/* Right side (Even items) */
+.timeline-item:nth-child(even) { left: 50%; text-align: left; }
+
+/* --- Interactive Timeline Dots --- */
+.timeline-item::after {
+  content: '';
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  right: -9px; /* Centered on line */
+  background-color: var(--white);
+  border: 4px solid var(--primary-red);
+  top: 35px; /* Aligned with card top */
+  border-radius: 50%;
+  z-index: 10;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Bouncy spring effect */
+  box-shadow: 0 0 0 0 rgba(183, 28, 28, 0);
+}
+
+.timeline-item:nth-child(even)::after {
+  left: -13px; /* Fix alignment for right side */
+}
+
+/* Dot Hover Effect (Ripple) */
+.timeline-item:hover::after {
+  transform: scale(1.4);
+  background-color: var(--primary-red);
+  box-shadow: 0 0 0 8px rgba(183, 28, 28, 0.1); /* The Ripple */
+  border-color: var(--white);
+}
+
+/* --- Card Styling & Physics Hover --- */
+.timeline-content {
+  padding: 2.5rem;
+  border-radius: 12px;
+  position: relative;
+  /* Smooth physics-based transition */
+  transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.4s ease;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+/* Card Hover Effect (Float) */
+.timeline-item:hover .timeline-content {
+  transform: translateY(-8px); /* Higher float */
+  box-shadow: 0 20px 40px rgba(0,0,0,0.12); /* Softer, deeper shadow */
+}
+
+/* --- ALTERNATING COLORS --- */
+
+/* ODD CARDS (White/Clean) */
+.timeline-item:nth-child(odd) .timeline-content {
+  background-color: var(--white);
+  border: 1px solid #f0f0f0;
+}
+.timeline-item:nth-child(odd) .timeline-date-badge {
+  background-color: #ffebee; /* Light red tint */
+  color: var(--primary-red);
+}
+.timeline-item:nth-child(odd) .timeline-company { color: var(--primary-grey); }
+.timeline-item:nth-child(odd) .timeline-role { color: var(--secondary-grey); }
+.timeline-item:nth-child(odd) .timeline-desc { color: #666; }
+
+/* EVEN CARDS (Red/Bold) */
+.timeline-item:nth-child(even) .timeline-content {
+  background: linear-gradient(145deg, var(--primary-red) 0%, #a31515 100%);
+  color: var(--white);
+  border: none;
+}
+.timeline-item:nth-child(even) .timeline-date-badge {
+  background-color: rgba(255,255,255,0.2);
+  color: var(--white);
+  backdrop-filter: blur(5px);
+}
+.timeline-item:nth-child(even) .timeline-company { color: var(--white); }
+.timeline-item:nth-child(even) .timeline-role { color: rgba(255,255,255,0.9); }
+.timeline-item:nth-child(even) .timeline-desc { color: rgba(255,255,255,0.85); }
+
+/* Typography */
+.timeline-date-badge {
+  display: inline-block;
+  padding: 6px 16px;
+  border-radius: 50px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  margin-bottom: 1.2rem;
+  letter-spacing: 0.5px;
+}
+
+.timeline-company {
+  margin: 0 0 8px 0;
+  font-size: 1.6rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+.timeline-role {
+  margin: 0 0 15px 0;
+  font-weight: 600;
+  font-size: 1.05rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.timeline-desc {
+  line-height: 1.6;
+  font-size: 1rem;
+}
+
+/* --- Mobile Responsiveness --- */
+@media (max-width: 768px) {
+  .timeline::after { left: 30px; }
+  
+  .timeline-item {
+    width: 100%;
+    padding-left: 70px;
+    padding-right: 20px;
+    margin-bottom: 2rem;
+  }
+  
+  .timeline-item::after {
+    left: 21px !important; /* Force dot to left */
+  }
+  
+  .timeline-item:nth-child(odd), .timeline-item:nth-child(even) {
+    left: 0;
+    text-align: left;
+  }
+
+  /* Make hover less dramatic on mobile to prevent scrolling issues */
+  .timeline-item:hover .timeline-content {
+    transform: translateY(-3px);
+  }
+}
