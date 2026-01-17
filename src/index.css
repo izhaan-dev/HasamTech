@@ -1,12 +1,10 @@
-/* Import Inter Font for that clean, professional look */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 
 :root {
-  --primary-red: #b71c1c;       /* Slightly deeper professional red */
-  --accent-red: #d32f2f;        /* Vibrant red for interactions */
-  --primary-grey: #263238;      /* Deep, rich charcoal */
-  --secondary-grey: #546e7a;    /* Professional slate grey */
-  --light-bg: #f5f7fa;          /* Cool grey-white background */
+  --primary-red: #c62828;
+  --primary-grey: #263238;
+  --secondary-grey: #546e7a;
+  --light-bg: #f5f7fa;
   --white: #ffffff;
   --shadow-sm: 0 4px 12px rgba(0,0,0,0.05);
   --shadow-lg: 0 15px 30px rgba(0,0,0,0.1);
@@ -15,14 +13,10 @@
 
 body {
   margin: 0;
-  font-family: 'Inter', system-ui, -apple-system, sans-serif; /* Minimalist font stack */
+  font-family: 'Inter', sans-serif;
   background-color: var(--light-bg);
   color: var(--primary-grey);
-  overflow-x: hidden;
-  -webkit-font-smoothing: antialiased; /* Makes font look crisp */
-  /* Subtle pattern to remove empty feel */
-  background-image: radial-gradient(#dfe6e9 1px, transparent 1px);
-  background-size: 40px 40px;
+  overflow-x: hidden; /* Prevents horizontal scrollbar */
 }
 
 a { text-decoration: none; color: inherit; }
@@ -36,8 +30,8 @@ ul { list-style: none; padding: 0; }
 
 /* --- Navbar --- */
 nav {
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px); /* Modern glass effect */
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(10px);
   box-shadow: var(--shadow-sm);
   position: sticky;
   top: 0;
@@ -50,24 +44,25 @@ nav {
   justify-content: space-between;
   align-items: center;
   height: 80px;
+  transition: height 0.3s ease;
 }
 
 .logo-area {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 12px;
   font-weight: 700;
   font-size: 1.25rem;
   color: var(--primary-grey);
   letter-spacing: -0.02em;
 }
 
-.logo-img { height: 45px; }
+.logo-img { height: 40px; }
 
 .nav-links { display: flex; gap: 40px; }
 
 .nav-links a {
-  font-weight: 500;
+  font-weight: 600;
   font-size: 0.95rem;
   color: var(--secondary-grey);
   position: relative;
@@ -81,14 +76,28 @@ nav {
   background-color: var(--primary-grey);
   color: rgba(255,255,255,0.8);
   text-align: center;
-  padding: 3rem 0;
+  padding: 3rem 1rem;
   margin-top: 6rem;
   font-size: 0.9rem;
 }
-.footer strong { color: var(--white); }
 
-/* --- Global Animations --- */
-@keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+/* --- MOBILE RESPONSIVENESS (Global) --- */
+@media (max-width: 768px) {
+  .nav-content {
+    flex-direction: column;
+    height: auto;
+    padding: 1rem 0;
+    gap: 1rem;
+  }
+
+  .nav-links {
+    gap: 20px;
+    font-size: 0.9rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .container {
+    padding: 0 20px;
+  }
 }

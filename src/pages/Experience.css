@@ -1,17 +1,15 @@
-/* --- Container (Clean, No Grid) --- */
+/* --- Container --- */
 .experience-container {
   padding: 6rem 0;
   animation: fadeInUp 0.8s ease-out;
-  background-color: #fcfcfc; /* Clean, very light grey/white */
-  /* Grid lines removed as requested */
+  background-color: #fcfcfc;
 }
 
 .experience-header {
   text-align: center;
   margin-bottom: 6rem;
   max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0 auto 6rem auto;
 }
 .experience-header h2 { font-size: 3.5rem; color: var(--primary-grey); margin-bottom: 1rem; letter-spacing: -1px; }
 .experience-header p { color: var(--secondary-grey); font-size: 1.25rem; }
@@ -23,12 +21,12 @@
   margin: 0 auto;
 }
 
-/* Center Line */
+/* Center Line (Default Desktop) */
 .timeline::after {
   content: '';
   position: absolute;
   width: 4px;
-  background-color: #e0e0e0; /* Light grey line */
+  background-color: #e0e0e0;
   top: 0;
   bottom: 0;
   left: 50%;
@@ -37,12 +35,12 @@
 }
 
 .timeline-item {
-  padding: 10px 50px; /* More breathing room */
+  padding: 10px 50px;
   position: relative;
   background-color: inherit;
   width: 50%;
   box-sizing: border-box;
-  margin-bottom: 3rem; /* More space between items */
+  margin-bottom: 3rem;
 }
 
 /* Left side (Odd items) */
@@ -57,55 +55,46 @@
   position: absolute;
   width: 18px;
   height: 18px;
-  right: -9px; /* Centered on line */
+  right: -9px;
   background-color: var(--white);
   border: 4px solid var(--primary-red);
-  top: 35px; /* Aligned with card top */
+  top: 35px;
   border-radius: 50%;
   z-index: 10;
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Bouncy spring effect */
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   box-shadow: 0 0 0 0 rgba(183, 28, 28, 0);
 }
 
-.timeline-item:nth-child(even)::after {
-  left: -13px; /* Fix alignment for right side */
-}
+.timeline-item:nth-child(even)::after { left: -13px; }
 
 /* Dot Hover Effect (Ripple) */
 .timeline-item:hover::after {
   transform: scale(1.4);
   background-color: var(--primary-red);
-  box-shadow: 0 0 0 8px rgba(183, 28, 28, 0.1); /* The Ripple */
+  box-shadow: 0 0 0 8px rgba(183, 28, 28, 0.1);
   border-color: var(--white);
 }
 
-/* --- Card Styling & Physics Hover --- */
+/* --- Card Styling --- */
 .timeline-content {
   padding: 2.5rem;
   border-radius: 12px;
   position: relative;
-  /* Smooth physics-based transition */
   transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.4s ease;
   box-shadow: 0 5px 15px rgba(0,0,0,0.05);
 }
 
-/* Card Hover Effect (Float) */
 .timeline-item:hover .timeline-content {
-  transform: translateY(-8px); /* Higher float */
-  box-shadow: 0 20px 40px rgba(0,0,0,0.12); /* Softer, deeper shadow */
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.12);
 }
-
-/* --- ALTERNATING COLORS --- */
 
 /* ODD CARDS (White/Clean) */
 .timeline-item:nth-child(odd) .timeline-content {
   background-color: var(--white);
   border: 1px solid #f0f0f0;
 }
-.timeline-item:nth-child(odd) .timeline-date-badge {
-  background-color: #ffebee; /* Light red tint */
-  color: var(--primary-red);
-}
+.timeline-item:nth-child(odd) .timeline-date-badge { background-color: #ffebee; color: var(--primary-red); }
 .timeline-item:nth-child(odd) .timeline-company { color: var(--primary-grey); }
 .timeline-item:nth-child(odd) .timeline-role { color: var(--secondary-grey); }
 .timeline-item:nth-child(odd) .timeline-desc { color: #666; }
@@ -116,68 +105,43 @@
   color: var(--white);
   border: none;
 }
-.timeline-item:nth-child(even) .timeline-date-badge {
-  background-color: rgba(255,255,255,0.2);
-  color: var(--white);
-  backdrop-filter: blur(5px);
-}
+.timeline-item:nth-child(even) .timeline-date-badge { background-color: rgba(255,255,255,0.2); color: var(--white); backdrop-filter: blur(5px); }
 .timeline-item:nth-child(even) .timeline-company { color: var(--white); }
 .timeline-item:nth-child(even) .timeline-role { color: rgba(255,255,255,0.9); }
 .timeline-item:nth-child(even) .timeline-desc { color: rgba(255,255,255,0.85); }
 
-/* Typography */
-.timeline-date-badge {
-  display: inline-block;
-  padding: 6px 16px;
-  border-radius: 50px;
-  font-size: 0.8rem;
-  font-weight: 700;
-  margin-bottom: 1.2rem;
-  letter-spacing: 0.5px;
-}
+.timeline-date-badge { display: inline-block; padding: 6px 16px; border-radius: 50px; font-size: 0.8rem; font-weight: 700; margin-bottom: 1.2rem; letter-spacing: 0.5px; }
+.timeline-company { margin: 0 0 8px 0; font-size: 1.6rem; font-weight: 800; letter-spacing: -0.5px; }
+.timeline-role { margin: 0 0 15px 0; font-weight: 600; font-size: 1.05rem; text-transform: uppercase; letter-spacing: 1px; }
+.timeline-desc { line-height: 1.6; font-size: 1rem; }
 
-.timeline-company {
-  margin: 0 0 8px 0;
-  font-size: 1.6rem;
-  font-weight: 800;
-  letter-spacing: -0.5px;
-}
-
-.timeline-role {
-  margin: 0 0 15px 0;
-  font-weight: 600;
-  font-size: 1.05rem;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-.timeline-desc {
-  line-height: 1.6;
-  font-size: 1rem;
-}
-
-/* --- Mobile Responsiveness --- */
+/* --- MOBILE RESPONSIVENESS (Experience) --- */
 @media (max-width: 768px) {
+  .experience-header h2 { font-size: 2.5rem; }
+  
+  /* Move line to left */
   .timeline::after { left: 30px; }
   
+  /* Make all items full width */
   .timeline-item {
     width: 100%;
-    padding-left: 70px;
+    padding-left: 70px; /* Space for the line */
     padding-right: 20px;
     margin-bottom: 2rem;
   }
   
+  /* Move dot to left for ALL items */
   .timeline-item::after {
-    left: 21px !important; /* Force dot to left */
+    left: 21px !important; 
+    right: auto; 
   }
   
+  /* Reset left/right alignment logic so everything aligns left */
   .timeline-item:nth-child(odd), .timeline-item:nth-child(even) {
     left: 0;
     text-align: left;
   }
 
-  /* Make hover less dramatic on mobile to prevent scrolling issues */
-  .timeline-item:hover .timeline-content {
-    transform: translateY(-3px);
-  }
+  /* Reduce padding on cards for mobile */
+  .timeline-content { padding: 1.5rem; }
 }

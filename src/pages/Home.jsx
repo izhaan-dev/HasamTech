@@ -97,8 +97,8 @@ const Home = () => {
         <div className="container">
           <div className="features-grid">
             <div className="feature-item">
-              <h3>10+ Years</h3>
-              <p>Specialized Experience</p>
+              <h3>25+ Years</h3>
+              <p>Oil and Gas Experience</p>
             </div>
             <div className="feature-divider"></div>
             <div className="feature-item">

@@ -7,7 +7,7 @@ import logo from './assets/logo.png'; // Make sure your Img1 is named logo.png i
 
 function App() {
   return (
-    <Router>
+    <Router basename="/HasamTech">
       <div className="app">
         {/* Navigation Bar */}
         <nav>
