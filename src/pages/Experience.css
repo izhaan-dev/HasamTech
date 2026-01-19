@@ -1,27 +1,31 @@
 /* --- Container --- */
 .experience-container {
-  padding: 6rem 0;
+  padding: 4rem 0; /* Reduced padding to minimize white space */
   animation: fadeInUp 0.8s ease-out;
   background-color: #fcfcfc;
+  /* Subtle texture */
+  background-image: radial-gradient(#e0e0e0 1px, transparent 1px);
+  background-size: 30px 30px;
 }
 
 .experience-header {
   text-align: center;
-  margin-bottom: 6rem;
+  margin-bottom: 4rem;
   max-width: 800px;
-  margin: 0 auto 6rem auto;
+  margin: 0 auto 4rem auto;
 }
-.experience-header h2 { font-size: 3.5rem; color: var(--primary-grey); margin-bottom: 1rem; letter-spacing: -1px; }
-.experience-header p { color: var(--secondary-grey); font-size: 1.25rem; }
+.experience-header h2 { font-size: 3rem; color: var(--primary-grey); margin-bottom: 0.5rem; letter-spacing: -1px; }
+.experience-header p { color: var(--secondary-grey); font-size: 1.1rem; }
 
-/* --- Timeline Structure --- */
+/* --- Timeline Layout (Left-Aligned) --- */
 .timeline {
   position: relative;
-  max-width: 1000px;
+  max-width: 1000px; /* Keeps text readable even on wide screens */
   margin: 0 auto;
+  padding-bottom: 2rem;
 }
 
-/* Center Line (Default Desktop) */
+/* The Vertical Line */
 .timeline::after {
   content: '';
   position: absolute;
@@ -29,119 +33,134 @@
   background-color: #e0e0e0;
   top: 0;
   bottom: 0;
-  left: 50%;
-  margin-left: -2px;
+  left: 34px; /* Fixed to the left side */
   border-radius: 2px;
 }
 
+/* Project Item Container */
 .timeline-item {
-  padding: 10px 50px;
   position: relative;
-  background-color: inherit;
-  width: 50%;
+  width: 100%;
+  padding-left: 80px; /* Space for the line and dot */
+  padding-right: 0;
   box-sizing: border-box;
-  margin-bottom: 3rem;
+  margin-bottom: 2rem; /* Consistent spacing */
 }
 
-/* Left side (Odd items) */
-.timeline-item:nth-child(odd) { left: 0; text-align: right; }
-
-/* Right side (Even items) */
-.timeline-item:nth-child(even) { left: 50%; text-align: left; }
-
-/* --- Interactive Timeline Dots --- */
+/* --- The Dots --- */
 .timeline-item::after {
   content: '';
   position: absolute;
-  width: 18px;
-  height: 18px;
-  right: -9px;
+  width: 20px;
+  height: 20px;
+  left: 22px; /* Centered on the line at 30px */
   background-color: var(--white);
   border: 4px solid var(--primary-red);
-  top: 35px;
+  top: 25px; /* Aligned with top of card */
   border-radius: 50%;
   z-index: 10;
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  box-shadow: 0 0 0 0 rgba(183, 28, 28, 0);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  box-shadow: 0 0 0 4px var(--fcfcfc); /* White ring to separate from line */
 }
 
-.timeline-item:nth-child(even)::after { left: -13px; }
-
-/* Dot Hover Effect (Ripple) */
+/* Hover Effect on Dot */
 .timeline-item:hover::after {
-  transform: scale(1.4);
+  transform: scale(1.3);
   background-color: var(--primary-red);
-  box-shadow: 0 0 0 8px rgba(183, 28, 28, 0.1);
   border-color: var(--white);
+  box-shadow: 0 0 0 8px rgba(198, 40, 40, 0.15);
 }
 
 /* --- Card Styling --- */
 .timeline-content {
-  padding: 2.5rem;
-  border-radius: 12px;
+  padding: 2rem;
+  border-radius: 8px;
   position: relative;
-  transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.4s ease;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+  display: flex;
+  flex-direction: column;
 }
 
+/* Hover Float */
 .timeline-item:hover .timeline-content {
-  transform: translateY(-8px);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+  transform: translateX(5px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
 }
 
-/* ODD CARDS (White/Clean) */
+/* --- ALTERNATING COLORS --- */
+
+/* ODD ITEMS: White Card */
 .timeline-item:nth-child(odd) .timeline-content {
   background-color: var(--white);
-  border: 1px solid #f0f0f0;
+  border: 1px solid #e0e0e0;
+  border-left: 4px solid var(--primary-grey); /* Grey Accent */
 }
-.timeline-item:nth-child(odd) .timeline-date-badge { background-color: #ffebee; color: var(--primary-red); }
+.timeline-item:nth-child(odd) .timeline-date-badge {
+  background-color: #f5f5f5;
+  color: var(--primary-grey);
+}
 .timeline-item:nth-child(odd) .timeline-company { color: var(--primary-grey); }
 .timeline-item:nth-child(odd) .timeline-role { color: var(--secondary-grey); }
-.timeline-item:nth-child(odd) .timeline-desc { color: #666; }
+.timeline-item:nth-child(odd) .timeline-desc { color: var(--secondary-grey); }
 
-/* EVEN CARDS (Red/Bold) */
+/* EVEN ITEMS: Red Card */
 .timeline-item:nth-child(even) .timeline-content {
-  background: linear-gradient(145deg, var(--primary-red) 0%, #a31515 100%);
+  background: linear-gradient(135deg, var(--primary-red) 0%, #b71c1c 100%);
   color: var(--white);
   border: none;
+  border-left: 4px solid rgba(0,0,0,0.2); /* Dark Accent */
 }
-.timeline-item:nth-child(even) .timeline-date-badge { background-color: rgba(255,255,255,0.2); color: var(--white); backdrop-filter: blur(5px); }
+.timeline-item:nth-child(even) .timeline-date-badge {
+  background-color: rgba(255,255,255,0.2);
+  color: var(--white);
+}
 .timeline-item:nth-child(even) .timeline-company { color: var(--white); }
 .timeline-item:nth-child(even) .timeline-role { color: rgba(255,255,255,0.9); }
 .timeline-item:nth-child(even) .timeline-desc { color: rgba(255,255,255,0.85); }
 
-.timeline-date-badge { display: inline-block; padding: 6px 16px; border-radius: 50px; font-size: 0.8rem; font-weight: 700; margin-bottom: 1.2rem; letter-spacing: 0.5px; }
-.timeline-company { margin: 0 0 8px 0; font-size: 1.6rem; font-weight: 800; letter-spacing: -0.5px; }
-.timeline-role { margin: 0 0 15px 0; font-weight: 600; font-size: 1.05rem; text-transform: uppercase; letter-spacing: 1px; }
-.timeline-desc { line-height: 1.6; font-size: 1rem; }
 
-/* --- MOBILE RESPONSIVENESS (Experience) --- */
+/* Typography */
+.timeline-date-badge {
+  align-self: flex-start;
+  padding: 4px 12px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.timeline-company {
+  margin: 0 0 5px 0;
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+.timeline-role {
+  margin: 0 0 12px 0;
+  font-weight: 600;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  opacity: 0.9;
+}
+
+.timeline-desc {
+  line-height: 1.6;
+  font-size: 1rem;
+  margin: 0;
+}
+
+/* --- Mobile Tweaks --- */
 @media (max-width: 768px) {
-  .experience-header h2 { font-size: 2.5rem; }
+  .experience-container { padding: 3rem 0; }
+  .timeline::after { left: 20px; } /* Slightly closer edge */
+  .timeline-item { padding-left: 60px; padding-right: 0; }
+  .timeline-item::after { left: 12px; }
   
-  /* Move line to left */
-  .timeline::after { left: 30px; }
-  
-  /* Make all items full width */
-  .timeline-item {
-    width: 100%;
-    padding-left: 70px; /* Space for the line */
-    padding-right: 20px;
-    margin-bottom: 2rem;
-  }
-  
-  /* Move dot to left for ALL items */
-  .timeline-item::after {
-    left: 21px !important; 
-    right: auto; 
-  }
-  
-  /* Reset left/right alignment logic so everything aligns left */
-  .timeline-item:nth-child(odd), .timeline-item:nth-child(even) {
-    left: 0;
-    text-align: left;
-  }
-
-  /* Reduce padding on cards for mobile */
   .timeline-content { padding: 1.5rem; }
+  .timeline-company { font-size: 1.3rem; }
 }

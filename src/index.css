@@ -16,16 +16,19 @@ body {
   font-family: 'Inter', sans-serif;
   background-color: var(--light-bg);
   color: var(--primary-grey);
-  overflow-x: hidden; /* Prevents horizontal scrollbar */
+  overflow-x: hidden;
 }
 
 a { text-decoration: none; color: inherit; }
 ul { list-style: none; padding: 0; }
 
+/* --- UPDATED CONTAINER WIDTH --- */
 .container {
-  max-width: 1200px;
+  max-width: 1600px; /* Increased from 1200px to fill PC screens better */
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0 40px;   /* Increased padding slightly for balance */
+  width: 100%;       /* Ensures it takes up space */
+  box-sizing: border-box;
 }
 
 /* --- Navbar --- */
@@ -52,18 +55,18 @@ nav {
   align-items: center;
   gap: 12px;
   font-weight: 700;
-  font-size: 1.25rem;
+  font-size: 1.4rem; /* Slightly larger for wider screen */
   color: var(--primary-grey);
   letter-spacing: -0.02em;
 }
 
-.logo-img { height: 40px; }
+.logo-img { height: 45px; }
 
-.nav-links { display: flex; gap: 40px; }
+.nav-links { display: flex; gap: 50px; } /* More space between links */
 
 .nav-links a {
   font-weight: 600;
-  font-size: 0.95rem;
+  font-size: 1rem;
   color: var(--secondary-grey);
   position: relative;
   transition: var(--transition);
@@ -98,6 +101,6 @@ nav {
   }
 
   .container {
-    padding: 0 20px;
+    padding: 0 20px; /* Keep smaller padding for mobile */
   }
 }
