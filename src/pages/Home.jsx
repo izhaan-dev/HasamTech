@@ -2,6 +2,15 @@ import { Link } from 'react-router-dom';
 import './Home.css';
 
 const Home = () => {
+
+  // Function to handle smooth scrolling
+  const scrollToFooter = () => {
+    const footer = document.querySelector('.footer');
+    if (footer) {
+      footer.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <div className="home-container">
       {/* Hero with Video Background & Fallback */}
@@ -26,7 +35,11 @@ const Home = () => {
           </p>
           <div className="hero-buttons">
             <Link to="/experience" className="cta-button">View Our Projects</Link>
-            <Link to="/contact" className="cta-button-outline">Contact Us</Link>
+            
+            {/* UPDATED BUTTON: Scrolls to footer */}
+            <button onClick={scrollToFooter} className="cta-button-outline">
+              Contact Us
+            </button>
           </div>
         </div>
       </div>
@@ -49,7 +62,7 @@ const Home = () => {
         </div>
       </div>
 
-      {/* UPDATED: Colorful "What We Do" Section */}
+      {/* Services Preview */}
       <div className="home-services-preview">
         <div className="container">
           <div className="section-header">

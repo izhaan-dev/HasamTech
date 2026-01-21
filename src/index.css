@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 
+/* --- 1. RESET & GLOBAL STYLES --- */
 :root {
   --primary-red: #c62828;
   --primary-grey: #263238;
@@ -7,31 +8,37 @@
   --light-bg: #f5f7fa;
   --white: #ffffff;
   --shadow-sm: 0 4px 12px rgba(0,0,0,0.05);
-  --shadow-lg: 0 15px 30px rgba(0,0,0,0.1);
   --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
-body {
+/* Kill all default browser spacing */
+* {
   margin: 0;
-  font-family: 'Inter', sans-serif;
-  background-color: var(--light-bg);
-  color: var(--primary-grey);
-  overflow-x: hidden;
-}
-
-a { text-decoration: none; color: inherit; }
-ul { list-style: none; padding: 0; }
-
-/* --- UPDATED CONTAINER WIDTH --- */
-.container {
-  max-width: 1600px; /* Increased from 1200px to fill PC screens better */
-  margin: 0 auto;
-  padding: 0 40px;   /* Increased padding slightly for balance */
-  width: 100%;       /* Ensures it takes up space */
+  padding: 0;
   box-sizing: border-box;
 }
 
-/* --- Navbar --- */
+/* Force full width on all wrappers */
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  font-family: 'Inter', sans-serif;
+  background-color: var(--light-bg);
+  color: var(--primary-grey);
+}
+
+#root, .app-container {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+a { text-decoration: none; color: inherit; }
+ul { list-style: none; }
+
+/* --- 2. NAVBAR (Updated for Logo + Text) --- */
 nav {
   background: rgba(255, 255, 255, 0.98);
   backdrop-filter: blur(10px);
@@ -40,6 +47,7 @@ nav {
   top: 0;
   z-index: 1000;
   border-bottom: 1px solid rgba(0,0,0,0.05);
+  width: 100%;
 }
 
 .nav-content {
@@ -47,60 +55,141 @@ nav {
   justify-content: space-between;
   align-items: center;
   height: 80px;
-  transition: height 0.3s ease;
+  width: 100%;
+  padding: 0 2rem; /* Spacing on sides */
 }
 
+/* Logo Area Wrapper */
 .logo-area {
   display: flex;
   align-items: center;
-  gap: 12px;
-  font-weight: 700;
-  font-size: 1.4rem; /* Slightly larger for wider screen */
-  color: var(--primary-grey);
-  letter-spacing: -0.02em;
 }
 
-.logo-img { height: 45px; }
+/* Link that holds Image + Text */
+.logo-link {
+  display: flex;
+  align-items: center;
+  gap: 12px; /* Space between image and text */
+  text-decoration: none;
+  color: var(--primary-grey);
+}
 
-.nav-links { display: flex; gap: 50px; } /* More space between links */
+/* THE FIX: Control the Image Size */
+.logo-img {
+  height: 50px;       /* Fixed height prevents it from being huge */
+  width: auto;        /* Auto width keeps aspect ratio */
+  object-fit: contain;
+  display: block;
+}
+
+/* The Text Style */
+.logo-text {
+  font-weight: 700;
+  font-size: 1.4rem;
+  letter-spacing: -0.5px;
+  white-space: nowrap;
+}
+
+/* Navigation Links */
+.nav-links { display: flex; gap: 40px; }
 
 .nav-links a {
   font-weight: 600;
   font-size: 1rem;
   color: var(--secondary-grey);
-  position: relative;
   transition: var(--transition);
 }
 
 .nav-links a:hover { color: var(--primary-red); }
 
-/* --- Footer --- */
+/* --- 3. LAYOUT UTILITIES --- */
+.container {
+  width: 100%;
+  max-width: 100%;
+  padding: 0 2rem;
+  margin: 0;
+}
+
+/* --- 4. FOOTER --- */
 .footer {
   background-color: var(--primary-grey);
   color: rgba(255,255,255,0.8);
-  text-align: center;
-  padding: 3rem 1rem;
-  margin-top: 6rem;
-  font-size: 0.9rem;
+  padding: 1.5rem 0;
+  margin-top: auto; 
+  border-top: 4px solid var(--primary-red);
+  width: 100%;
 }
 
-/* --- MOBILE RESPONSIVENESS (Global) --- */
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  font-size: 0.9rem;
+  padding: 0 2rem;
+  width: 100%;
+}
+
+.footer-contact {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.footer-link {
+  color: rgba(255,255,255,0.9);
+  transition: var(--transition);
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.footer-link:hover { color: var(--white); }
+
+.separator { color: rgba(255,255,255,0.3); }
+
+/* --- 5. MOBILE RESPONSIVENESS --- */
 @media (max-width: 768px) {
+  /* Adjust Navbar Padding */
   .nav-content {
+    padding: 0 1rem;
+    height: 70px;
+  }
+
+  /* Shrink Logo & Text slightly for phones */
+  .logo-img { height: 40px; }
+  .logo-text { font-size: 1.1rem; }
+
+  /* Hide Nav Links (or stack them if you prefer) */
+  .nav-links {
+    display: none; /* Simple fix: hide links on very small screens, or... */
+    /* ...Uncomment below to stack them: */
+    /* display: flex;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    background: white;
     flex-direction: column;
-    height: auto;
-    padding: 1rem 0;
+    padding: 1rem;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    */
+  }
+
+  .container, .footer-content { padding: 0 1rem; }
+
+  .footer-content {
+    flex-direction: column;
+    text-align: center;
     gap: 1rem;
   }
-
-  .nav-links {
-    gap: 20px;
-    font-size: 0.9rem;
-    flex-wrap: wrap;
-    justify-content: center;
+  
+  .footer-contact {
+    flex-direction: column;
+    gap: 0.5rem;
   }
-
-  .container {
-    padding: 0 20px; /* Keep smaller padding for mobile */
-  }
+  
+  .separator { display: none; } 
 }
