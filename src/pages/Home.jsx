@@ -3,7 +3,7 @@ import './Home.css';
 
 const Home = () => {
 
-  // Function to handle smooth scrolling
+  // Function to handle smooth scrolling to footer
   const scrollToFooter = () => {
     const footer = document.querySelector('.footer');
     if (footer) {
@@ -13,20 +13,18 @@ const Home = () => {
 
   return (
     <div className="home-container">
-      {/* Hero with Video Background & Fallback */}
+      {/* --- Hero Section with Static Image Background --- */}
       <div className="hero-section">
+        
+        {/* 1. The dark gradient overlay (keeps text readable) */}
         <div className="video-overlay"></div>
-        <video 
-          autoPlay 
-          loop 
-          muted 
-          playsInline 
-          className="hero-video"
-          poster="https://images.pexels.com/photos/257736/pexels-photo-257736.jpeg?auto=compress&cs=tinysrgb&w=1600"
-        >
-          <source src="https://player.vimeo.com/external/371836823.sd.mp4?s=d12469493f0b240cc96839a8508c90b63390c53d&profile_id=164&oauth2_token_id=57447761" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
+
+        {/* 2. The new static background image (Refinery) */}
+        <img 
+          src="https://images.pexels.com/photos/257700/pexels-photo-257700.jpeg?auto=compress&cs=tinysrgb&w=1600" 
+          alt="Refinery Background" 
+          className="hero-bg-image"
+        />
 
         <div className="hero-content">
           <h1>Hasam Technical Consultancy</h1>
@@ -36,10 +34,10 @@ const Home = () => {
           <div className="hero-buttons">
             <Link to="/experience" className="cta-button">View Our Projects</Link>
             
-            {/* UPDATED BUTTON: Scrolls to footer */}
-            <button onClick={scrollToFooter} className="cta-button-outline">
+            {/* Button scrolls to footer */}
+            {/* <button onClick={scrollToFooter} className="cta-button-outline">
               Contact Us
-            </button>
+            </button> */}
           </div>
         </div>
       </div>

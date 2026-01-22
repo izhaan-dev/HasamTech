@@ -52,6 +52,16 @@ function App() {
               <a href="mailto:anwar@hasamtech.com" className="footer-link">
                 ✉️ anwar@hasamtech.com
               </a>
+              <span className="separator">|</span>
+              {/* NEW LINKEDIN BUTTON */}
+              <a 
+                href="https://www.linkedin.com/in/anwartatariya/" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="footer-link"
+              >
+                🔹 Connect on LinkedIn
+              </a>
             </div>
           </div>
         </footer>
